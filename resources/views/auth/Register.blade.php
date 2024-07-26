@@ -130,6 +130,24 @@
         </form>
         <p id="error-message" style="color: red; display: none;"></p>
     </div>
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#registerForm').on('submit', function(event) {
+                event.preventDefault();
+                $.ajax({
+                    url: '{{ route("ajax.register") }}',
+                    method: 'POST',
+                    data: $(this).serialize(),
+                    success: function(response) {
+                        window.location.href = '{{ url("/") }}';
+                    },
+                    error: function(xhr) {
+                        $('#error-message').text(xhr.responseJSON.message).show();
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 </html>

@@ -1,66 +1,106 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Prueba tecnica *Amazon registe clone*.
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Este Proyecto es una Prueba tecnica de la empresa Inversiones digitale Corp SAS. Su objetivo es realizar la clonacion de el sistema de registro de usuarios de amazon. Implementado Laravel, ajax , sqlite  .
 
-## About Laravel
+## Test 
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+Agrege testing para validar el correcto funcionaminto de registro de usuario
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+### Configurar test
+- realize modificacion del archivo env.testing agregando su configuracion para realizar la conexion de  la base de datos mysql
+- cree la base de datos test 
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+### Correr Test
 
-## Learning Laravel
+Ejecute el siguiente comando.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+```bash
+    php artisan test --filter UserRegisterTest --env=testing
+```
+## Ruta
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+Aqui encontraremos las ruta para el registro de usuario el cual redirecciona al archivo welcome.blade.php si funciono bien
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+    http://localhost:8000/auht/register
 
-## Laravel Sponsors
+## Instrucciones de instalacion
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+### Clonar el Repositorio
 
-### Premium Partners
+Primero, clona el repositorio en tu máquina local:
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+```bash
+    git clone https://github.com/tu_usuario/amazon-register-clone.git
+    cd amazon-register-clone
+```
 
-## Contributing
+### Configurar el Entorno
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+Copia el archivo .env.example a .env y configura las variables de entorno según tus necesidades:
 
-## Code of Conduct
+```bash
+```
+```bash
+    cp .env.example .env
+```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+Genera la clave de la aplicación:
 
-## Security Vulnerabilities
+```bash
+    php artisan key:generate
+```
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
 
-## License
+### Instalar Dependencias
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Instala las dependencias de Composer:
+
+
+```bash
+    composer install
+```
+
+### Configurar la Base de Datos
+
+Configura la base de datos en el archivo .env. Asegúrate de tener una base de datos creada para este proyecto.
+
+```env
+    DB_CONNECTION=sqlite
+    DB_DATABASE=database/database.sqlite
+```
+
+Crea el archivo de base de datos SQLite:
+
+```bash
+    touch database/database.sqlite
+```
+
+Ejecuta las migraciones para crear las tablas necesarias:
+
+```bash
+    php artisan migrate
+```
+
+
+## Ejecutar el Servidor de Desarrollo
+
+Inicia el servidor de desarrollo de Laravel:
+
+```bash
+    php artisan serve
+```
+Accede a la aplicación en tu navegador web en http://localhost:8000.
+
+## Funcionalidades
+
+    - Registro de usuarios con validación en tiempo real utilizando AJAX.
+    - Redirección a la página de inicio después del registro exitoso.
+    - Manejo de errores y mensajes de validación mostrados en la interfaz de usuario.
+
+## Estructura del Proyecto
+
+El proyecto sigue la estructura estándar de Laravel. Las partes más importantes relacionadas con el registro de usuarios son:
+
+    - Rutas: Definidas en routes/web.php.
+    - Controladores: app/Http/Controllers/Auth/RegisterController.php.
+    - Vistas: resources/views/auth/register.blade.php.

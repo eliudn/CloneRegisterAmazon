@@ -7,7 +7,7 @@ use App\Http\Requests\UserCreateRequest;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 
-class RegisterController extends Controller
+class UserRegisterController extends Controller
 {
     public function __invoke(UserCreateRequest $request)
     {

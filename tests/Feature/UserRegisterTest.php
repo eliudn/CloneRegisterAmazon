@@ -2,6 +2,7 @@
 
 namespace Tests\Feature;
 
+use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
@@ -46,6 +47,22 @@ class UserRegisterTest extends TestCase
                 'The password field confirmation does not match.',
                 'The password field must be at least 6 characters.'
             ]
+        ]);
+    }
+    public function test_register_user_fail_request_unique_mail():void
+    {
+        User::factory()->create(['email'=>'dev@test.com']);
+        $data = [
+            'name'=>'Test',
+            'email'=>'dev@test.com',
+            'password'=>'123456',
+            'password_confirmation'=>'123456'
+        ];
+
+        $response = $this->post( '/auth/register', $data);
+        $response->assertSessionHasErrors(['email']);
+        $response->assertInvalid([
+            'email' => 'The email has already been taken.',
         ]);
     }
 }
