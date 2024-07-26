@@ -30,16 +30,14 @@ Aqui encontraremos las ruta para el registro de usuario el cual redirecciona al 
 Primero, clona el repositorio en tu máquina local:
 
 ```bash
-    git clone https://github.com/tu_usuario/amazon-register-clone.git
-    cd amazon-register-clone
+    git clone https://github.com/eliudn/CloneRegisterAmazon.git
+    cd CloneRegisterAmazon
 ```
 
 ### Configurar el Entorno
 
 Copia el archivo .env.example a .env y configura las variables de entorno según tus necesidades:
 
-```bash
-```
 ```bash
     cp .env.example .env
 ```
